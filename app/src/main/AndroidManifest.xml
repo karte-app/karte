@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-feature
+        android:name="android.hardware.type.automotive"
+        android:required="true" />
+
+    <!-- Vehicle SDK: 브레이크·기어·조향각·주행 모드·주행거리 / 경고등 / 방향지시등 -->
+    <uses-permission android:name="pleos.car.permission.CAR_DRIVE" />
+    <uses-permission android:name="pleos.car.permission.CAR_SAFETY" />
+    <!-- 경고등(Telltales) 구독 API가 요구하는 권한 -->
+    <uses-permission android:name="pleos.car.permission.PRIVATE_CAR_SAFETY" />
+    <uses-permission android:name="pleos.car.permission.CAR_LIGHTS" />
+    <!-- SpeechToText / TextToSpeech SDK -->
+    <uses-permission android:name="pleos.car.permission.STT_SERVICE" />
+    <uses-permission android:name="pleos.car.permission.TTS_SERVICE" />
+    <!-- NaviHelper SDK: 현재 위치·제한속도 조회, 정비소 길 안내 -->
+    <uses-permission android:name="pleos.car.permission.NAVI_ROUTE" />
+    <uses-permission android:name="pleos.car.permission.NAVI_ROUTE_SEARCH" />
+    <!-- FusedLocation SDK -->
+    <uses-permission android:name="pleos.car.permission.FUSED_LOCATION" />
+    <!-- AAOS 표준: 차속(PERF_VEHICLE_SPEED), 기어(GEAR_SELECTION) -->
+    <uses-permission android:name="android.car.permission.CAR_SPEED" />
+    <uses-permission android:name="android.car.permission.CAR_POWERTRAIN" />
+
+    <application
+        android:allowBackup="false"
+        android:appCategory="productivity"
+        android:icon="@drawable/ic_karte"
+        android:label="@string/app_name"
+        android:supportsRtl="false"
+        android:theme="@style/Theme.Karte">
+
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout|density|uiMode|keyboard|keyboardHidden"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustResize">
+            <!-- 주행 중에도 음성 기록 화면을 쓸 수 있도록 Distraction Optimization 선언.
+                 주행 규제가 활성화되면 앱이 목록·입력 UI를 직접 숨깁니다. -->
+            <meta-data
+                android:name="distractionOptimized"
+                android:value="true" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

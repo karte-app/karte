@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 시작 화면 배경. 실제 색은 Palette.kt가 주간·야간에 맞춰 지정합니다. -->
+    <color name="bg">#FFFFFF</color>
+    <color name="accent">#000000</color>
+    <color name="text">#000000</color>
+</resources>
