@@ -121,6 +121,17 @@ sh gradlew assembleRelease
 6. 기록을 누르면 그 순간의 스냅샷(속도, 기어, 브레이크, 핸들, 켜진 경고등, 위치)이 나옵니다.
 7. "리포트"로 정비소용 요약을 엽니다.
 
+## 테스트
+
+| 단계 | 방법 | 결과 |
+| --- | --- | --- |
+| 단위 테스트 | `sh gradlew testDebugUnitTest` | 18건 통과 |
+| 통합 테스트 | 같은 명령 (`StoreAnalysisIntegrationTest`) | 5건 통과 |
+| 시스템 테스트 | `python3 tests/system/system_test.py` (에뮬레이터 + Virtual Console) | 24개 확인 항목 통과 |
+| 인수 테스트 | 기획서 시나리오 기준, 시스템 테스트 + 수동 확인 | 9개 중 7개 통과, 1개 일부 통과, 1개 일부 미확인 |
+
+단계별 범위, 실행 방법, 통과하지 못했거나 확인하지 못한 항목은 [docs/TESTING.md](docs/TESTING.md)에 있습니다. 실차 테스트는 하지 못했습니다.
+
 ## 검증 범위와 한계
 
 Pleos Connect 에뮬레이터 v2.1.0에서 확인한 것:
@@ -165,7 +176,12 @@ app/src/main/java/com/karte/app/
   Samples.kt            예시 기록
 app/src/test/java/com/karte/app/
   PatternAnalyzerTest.kt
+  LabelsTest.kt         단위 테스트: 표시 문구
+  ModelsJsonTest.kt     단위 테스트: JSON 저장 형식, 분류
+  StoreAnalysisIntegrationTest.kt  통합 테스트: 저장 → 다시 읽기 → 분석
+tests/system/
+  system_test.py        시스템 테스트: 에뮬레이터 전체 흐름 자동 확인
 apk/                    release APK
-docs/                   시연 영상
+docs/                   시연 영상, 테스트 문서(TESTING.md)
 keystore/               공모전 제출용 서명 키
 ```

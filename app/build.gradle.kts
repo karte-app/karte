@@ -53,4 +53,6 @@ dependencies {
     implementation("ai.pleos.playground:FusedLocation:1.1.3")
 
     testImplementation("junit:junit:4.13.2")
+    // 단위 테스트에서 JSON 저장 형식을 실제 구현으로 검증합니다. (기기에서는 Android 내장 org.json 사용)
+    testImplementation("org.json:json:20240303")
 }
